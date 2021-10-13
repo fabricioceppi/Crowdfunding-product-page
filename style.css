@@ -220,6 +220,13 @@ section {
     text-align: center;
 }
 
+.funding-status > h2 {
+    visibility: hidden;
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+
 .funding-status hr {
     border: none;
     width: 80px;
