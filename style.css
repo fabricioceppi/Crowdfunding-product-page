@@ -1,0 +1,531 @@
+/* Crowdfunding main style */
+
+/* General elements styling */
+
+* {
+    font-family: 'Commissioner', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f9f9f9;
+    background-image: url('images/image-hero-mobile.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+p, span {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: hsl(0, 0%, 48%);
+}
+
+span {
+    padding-left: 8px;
+}
+
+p {
+    margin-top: 20px;
+}
+
+.big {
+    color: rgb(0,0,0);
+    font-weight: 700;
+    font-size: 36px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+h3, .med {
+    font-size: 17px;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 8px;
+}
+
+h4 {
+    color: hsl(176, 50%, 47%);
+}
+
+button {
+    background-color: hsl(176, 50%, 47%);
+    border: none;
+    padding: 18.5px 45px;
+    border-radius: 29px;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+button:hover {
+    background-color: hsl(176, 72%, 28%);
+}
+
+button:focus {
+    outline: none;
+}
+
+button:disabled {
+    background-color: hsl(0, 0%, 48%);
+}
+
+#bookmark {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    position: absolute;
+}
+
+#bookmark:checked + div::after {
+    color: hsl(176, 72%, 28%);
+}
+
+#bookmark:checked + div circle {
+    fill: hsl(176, 72%, 28%);
+}
+
+#bookmark:checked + div path {
+    fill: white;
+}
+
+#bookmark-container {
+    cursor: pointer;
+}
+
+#funding-meter {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 24px;
+    background: #f3f3f3;
+}
+
+#funding-meter::-webkit-meter-bar {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    border: none;
+    background: #f3f3f3;
+}
+
+#funding-meter::-moz-meter-bar {
+    background: hsl(176, 50%, 47%);
+    border-radius: 5px;
+}
+
+#funding-meter::-webkit-meter-optimum-value {
+    background: hsl(176, 50%, 47%);
+    border-radius: 5px;
+}
+
+li {
+    list-style: none;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 28px;
+    opacity: 0;
+    transition: all 0.5 ease-in-out 0.5s;
+}
+
+li + li {
+    border-top: 1px solid #dfdfdf;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0,0,0);
+}
+
+/* header */
+
+header {
+    width: 100%;
+    padding: 32px 24px;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), transparent);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+#close-menu {
+    display: none;
+    cursor: pointer;
+}
+
+#open-menu {
+    cursor: pointer;
+}
+
+nav {
+    width: 100%;
+    background-color: white;
+    margin-top: 32px;
+    border-radius: 12px;
+    transform: scaleY(0);
+    transform-origin: top;
+}
+
+/* Main */
+
+main {
+    margin: 24px;
+    margin-top: 66vw;
+    max-width: 722px;
+}
+
+section {
+    padding: 24px 24px 48px 24px;
+    background-color: white;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    border: 1px solid #f3f3f3;
+}
+
+.project-title {
+    text-align: center;
+    position: relative;
+    padding-top: 48px;
+}
+
+.project-title > img {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.project-title > div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+
+.funding-status {
+    text-align: center;
+}
+
+.funding-status hr {
+    border: none;
+    width: 80px;
+    margin: 24px auto;
+    border-bottom: 1px solid lightgrey;
+}
+
+.backing-option {
+    border: 1px solid #dfdfdf;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+    cursor: pointer;
+}
+
+.backing-option.disabled {
+    opacity: 0.5;
+}
+
+.backing-option:focus-within {
+    border: 2px solid hsl(176, 50%, 47%);
+}
+
+.backing-option .big {
+    margin-top: 32px;
+}
+
+.backing-option button {
+    margin-top: 32px;
+}
+
+.modal-options h3 {
+    transition: color 0.5s;
+    cursor: pointer;
+}
+
+.modal-options h3:hover {
+    color: hsl(176, 50%, 47%);
+}
+
+.about {
+    padding-bottom: 24px;
+}
+
+/* modals */
+
+.modals {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 0;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    overflow-y: scroll;
+    z-index: 4;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 722px;
+    padding: 35px 24px 16px 24px;
+    margin-top: 46px;
+    margin-bottom: 46px;
+}
+
+.backing-modal,
+.modal-options,
+.greeting {
+    display: none;
+}
+
+.greeting {
+    text-align: center;
+    margin-bottom: 24px;
+    animation-name: appear;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.backing-modal.active,
+.greeting.active,
+.modal-options.active {
+    display: block;
+}
+
+.backing-modal {
+    position: relative;
+}
+
+input[type='radio'] {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+.option-select {
+    display: flex;
+    align-items: center;
+}
+
+.radio-label {
+    display: block;
+    height: 32px;
+    width: 32px;
+    border: 1px solid #dfdfdf;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 24px;
+}
+
+input[type='radio']:checked + label::after {
+    content: '';
+    display: block;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background-color: hsl(176, 50%, 47%);
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+
+.custom-pledge {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 32px;
+    border-top: 1px solid #dfdfdf;
+    margin-top: 32px;
+    display: none;
+}
+
+.custom-pledge > label {
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    color: hsl(0, 0%, 48%);
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.pledge-input {
+    width: 40%;
+    margin-right: 16px;
+    flex-grow: 1;
+    position: relative;
+}
+
+.pledge-input > input {
+    border: 1px solid #dfdfdf;
+    padding: 16px 24px;
+    border-radius: 29px;
+    font-size: 16px;
+    color: rgb(0,0,0);
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+}
+
+.pledge-input > input:focus {
+    outline: hsl(176, 50%, 47%);
+}
+
+.pledge-input::before {
+    content: '$';
+    position: absolute;
+    top: 17.5px;
+    left: 24px;
+    color: hsl(0, 0%, 48%);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.custom-pledge > button {
+    padding: 16px 24px;
+    margin-top: 0;
+}
+
+.backing-option:focus-within .custom-pledge {
+    display: flex;
+}
+
+#close-modal {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    cursor: pointer;
+}
+
+.greeting > img {
+    margin-bottom: 32px;
+}
+
+#done {
+    margin-top: 32px;
+}
+
+@media only screen and (min-width: 769px) {
+    body {
+        padding: 0;
+        background-image: url('images/image-hero-desktop.jpg');
+        background-size: 100%;
+    }
+
+    #open-menu {
+        display: none;
+    }
+
+    header {
+        align-items: center;
+        padding: 24px 10%;
+    }
+
+    nav {
+        transform: scaleY(1);
+        background-color: transparent;
+        width: auto;
+        margin-top: 0;
+    }
+
+    li {
+        opacity: 1;
+        font-size: 16px;
+        display: inline-block;
+        font-weight: 400;
+        padding: 16px;
+    }
+
+    li + li {
+        border: none;
+    }
+
+    li > a {
+        color: white;
+    }
+
+    main {
+        margin: 22vw auto 10vw auto;
+    }
+
+    main .backing-option {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .funding-status {
+        text-align: left;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .funding-status hr {
+        -moz-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        margin: 0;
+        } 
+
+    #bookmark-container {
+        width: 174px;
+        background-color: #dfdfdf;
+        height: 56px;
+        border-radius: 28px;
+        text-align: left;
+        position: relative;
+    }
+
+    #bookmark-container::after {
+        content: 'Bookmark';
+        font-size: 16px;
+        font-weight: 700;
+        color: hsl(0, 0%, 48%);
+        position: absolute;
+        top: 18px;
+        right: 24px;
+    }
+
+    .modal-content {
+        margin: 10vw auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .modal-content::-webkit-scrollbar {
+        display: none;
+    }
+
+}
